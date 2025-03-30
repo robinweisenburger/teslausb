@@ -123,12 +123,6 @@ function check_available_space_usb () {
   local drive_type
   drive_type=$(lsblk -pno TYPE "$DATA_DRIVE" | head -n 1)
 
-  if [ "$drive_type" != "disk" ]
-  then
-    setup_progress "STOP: The specified drive ($DATA_DRIVE) is not a disk (TYPE=$drive_type). Please specify path to the disk."
-    exit 1
-  fi
-
   # This verifies only the total size of the USB Drive.
   # All existing partitions on the drive will be erased if backingfiles are to be created or changed.
   # EXISTING DATA ON THE DATA_DRIVE WILL BE REMOVED.
